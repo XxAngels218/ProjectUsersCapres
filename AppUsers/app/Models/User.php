@@ -47,4 +47,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class, 'area_id'); // 'area_id' es el nombre de la columna que hace referencia al área_id en la tabla de usuarios
+    }
 }

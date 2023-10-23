@@ -20,6 +20,6 @@ Route::get('/', function () {
 
 Route::resource('usuarios', UserController::class);
 
-Route::get('usuarios/informe', 'UserController@generarInforme')->name('usuarios.informe');
+Route::get('informe', [UserController::class, 'generarInforme'])->name('usuarios.informe');
 
 

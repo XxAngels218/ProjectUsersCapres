@@ -18,7 +18,7 @@
         <tbody>
             @foreach ($users as $user)
                 <tr>
-                    <td>{{ $user->nombre_completo }}</td>
+                    <td>{{ $user->nombre . " " . $user->apellidos}}</td>
                     <td>{{ $user->area->nombre }}</td>
                     <td>{{ $user->sexo }}</td>
                     <td>{{ $user->pais }}</td>

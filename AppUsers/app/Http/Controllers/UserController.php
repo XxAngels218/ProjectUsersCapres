@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Area;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UserController extends Controller
 {
@@ -92,13 +92,13 @@ class UserController extends Controller
 
 
     public function generarInforme(Request $request)
-    {
-        $users = User::when($request->has('area_id'), function ($query) use ($request) {
-            $query->where('area_id', $request->input('area_id'));
-        })->get();
+{
+    $users = User::when($request->has('area_id'), function ($query) use ($request) {
+        $query->where('area_id', $request->input('area_id'));
+    })->get();
 
-        $pdf = PDF::loadView('usuarios.informe', compact('users'));
+    $pdf = PDF::loadView('usuarios.informe', compact('users'));
 
-        return $pdf->download('informe_usuarios.pdf');
-    }
+    return $pdf->download('informe_usuarios.pdf');
+}
 }
